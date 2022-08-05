@@ -5,5 +5,10 @@
 
 html {
     scroll-behavior: smooth;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    /* font-family: 'Oxygen', sans-serif; */
+}
+
+input {
+    font-family: inherit;
 }

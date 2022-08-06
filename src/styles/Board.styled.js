@@ -17,7 +17,6 @@ export const Board = styled.div`
     display: flex;
     align-items: flex-end;
     gap: 25px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
 
     .degree {
       font-size: 8rem;
@@ -147,6 +146,7 @@ export const Board = styled.div`
         margin-bottom: 15px;
       }
     }
+
     .next-day {
       border-bottom: none;
     }

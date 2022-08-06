@@ -3,13 +3,13 @@ import React from "react";
 const Details = () => {
   return (
     <section className="details">
-      <div className="search">
+      <form className="search">
         <input type="text" placeholder="Look for another location..." />
 
-        <button type="button" className="search-icon">
+        <button type="submit" className="search-icon">
           <img src="/icons/search.png" alt="search-icon" />
         </button>
-      </div>
+      </form>
 
       <div className="history">
         <p>Birmingham</p>
@@ -44,6 +44,11 @@ const Details = () => {
 
       <div className="weather-details next-day">
         <h1 className="title">Next Day</h1>
+
+        <span>
+          <p>Temperature</p>
+          <p>27°</p>
+        </span>
 
         <span>
           <p>Cloudy</p>

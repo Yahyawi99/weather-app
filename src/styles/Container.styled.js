@@ -7,6 +7,5 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  background: url("/images/cloudy/cloudy-weather-medium.jpg") bottom/cover
-    no-repeat;
+  background: ${({ stylesVariables: { background } }) => background};
 `;

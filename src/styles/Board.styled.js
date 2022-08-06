@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
 export const Board = styled.div`
-  width: 80%;
-  height: 85vh;
+  width: 75%;
+  height: 80vh;
+  color: #fff;
   position: absolute;
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   /* ************************************************** */
-  /* image */
-  .image {
-    flex: 0.6;
+  /* image text */
+  .image-txt {
+    width: 65%;
     height: 100%;
-    background: url("/images/cloudy/cloudy-weather-medium.jpg") center/cover
+    background: url("/images/cloudy/cloudy-weather-large.jpg") top center/ cover
       no-repeat;
-    color: #fff;
     display: flex;
-    align-items: flex-end;
-    gap: 25px;
 
     .degree {
       font-size: 8rem;
@@ -50,7 +50,7 @@ export const Board = styled.div`
   }
 
   *::-webkit-scrollbar-thumb {
-    background: #e2560d;
+    background: #ff7300;
     border-radius: 10px;
   }
 
@@ -61,18 +61,19 @@ export const Board = styled.div`
   /* ************************************************** */
   /* details */
   .details {
-    flex: 0.4;
-    background-color: transparent;
+    width: 35%;
+    height: 100%;
     color: #fff;
-    backdrop-filter: blur(75px);
-    filter: brightness(175%);
+    background: transparent;
+    backdrop-filter: blur(100px);
     overflow-x: hidden;
     overflow-y: scroll;
-    padding: 0px 0px 0px 25px;
+    padding: 0px 0px 0px 35px;
+    z-index: 10;
 
     /* search */
     .search {
-      height: 80px;
+      height: 70px;
       display: flex;
       justify-content: space-between;
 
@@ -87,7 +88,7 @@ export const Board = styled.div`
         outline: none;
         padding: 0px 0px 15px 0px;
 
-        ::placeholder {
+        &::placeholder {
           color: #fff;
           font-weight: 300;
           opacity: 0.5;
@@ -95,8 +96,8 @@ export const Board = styled.div`
       }
 
       button {
-        width: 90px;
-        background-color: #e2560d;
+        width: 80px;
+        background-color: #ff7300;
         border: none;
         cursor: pointer;
         transition: 0.25s;
@@ -104,7 +105,7 @@ export const Board = styled.div`
         img {
           max-width: 30px;
         }
-        :hover {
+        &:hover {
           opacity: 0.75;
         }
       }
@@ -152,38 +153,3 @@ export const Board = styled.div`
     }
   }
 `;
-
-/* 
-cloudy : 
-
-dark :#070607
-brown : #5C1F0C
-grey : #62483B
-light-grey:#E7CFBF
-ligh-brown : #9E2805
-dark-orange : #C83803
-orange : #E2560D
-
-*/
-
-/*
-sunny:
-
-blue: #1A5BA9
-dark-blue : #152C44
-light-blue: #4F8BB9
-sky-blue: #669DC4
-dark-brown : #4B3929
-light-brown :#C6AC93
-
-*/
-
-/* 
-rainy : 
-black :#090F0E
-dark-green : #28413E
-light-green :#718583
-grey: #4F6764
-light-grey: #9EA7A6
-wheat : #E0E3E3
-*/

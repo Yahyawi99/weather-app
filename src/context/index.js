@@ -1,11 +1,35 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 const AppContext = React.createContext();
 const Provider = ({ children }) => {
   const [imageSrc, setImageSrc] = useState("");
   const [stylesVariables, setStylesVariables] = useState({});
 
-  return <AppContext.Provider value={"hi"}>{children}</AppContext.Provider>;
+  const variables = {
+    background:
+      'url("/images/cloudy/cloudy-weather-small.jpg") bottom/cover repeat',
+  };
+  const variables1 = {
+    background: "linear-gradient(#d4ecfd 0%,#669DC4 50%,#1A5BA9 95%)",
+  };
+  const variables2 = {
+    background:
+      "linear-gradient(rgb(7, 6, 7,.75),rgb(7, 6, 7,.9),rgb(7, 6, 7))",
+  };
+
+  useEffect(() => {
+    setStylesVariables(variables);
+  }, []);
+
+  return (
+    <AppContext.Provider
+      value={{
+        stylesVariables,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export const useGlobal = () => {
@@ -15,7 +39,41 @@ export const useGlobal = () => {
 export default Provider;
 
 /*
+sunny:
 
+blue: #1A5BA9
+dark-blue : #152C44
+light-blue: #4F8BB9
+sky-blue: #669DC4
+dark-brown : #4B3929
+light-brown :#C6AC93
+
+*/
+
+/* 
+rainy : 
+black :#090F0E
+dark-green : #28413E
+light-green :#718583
+grey: #4F6764
+light-grey: #9EA7A6
+wheat : #E0E3E3
+*/
+
+/* 
+cloudy : 
+
+dark :#070607
+brown : #5C1F0C
+grey : #62483B
+light-grey:#E7CFBF
+ligh-brown : #9E2805
+dark-orange : #C83803
+orange : #E2560D
+
+*/
+
+/*
 const options = {
 	method: 'GET',
 	headers: {

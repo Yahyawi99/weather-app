@@ -18,6 +18,8 @@ const AppContainer = () => {
       <Board>
         <ImageText />
 
+        <div className="details-back"></div>
+
         <Details />
       </Board>
     </Container>

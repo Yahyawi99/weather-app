@@ -17,6 +17,7 @@ export const Board = styled.div`
     background: url("/images/cloudy/cloudy-weather-large.jpg") top center/ cover
       no-repeat;
     display: flex;
+    align-items: flex-end;
 
     .degree {
       font-size: 8rem;
@@ -42,6 +43,13 @@ export const Board = styled.div`
       }
     }
   }
+  .details-back {
+    width: 35%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background: linear-gradient(rgb(40, 65, 62), rgb(40, 65, 62, 0.25));
+  }
 
   /* ************************************************** */
   *::-webkit-scrollbar {
@@ -65,10 +73,9 @@ export const Board = styled.div`
     height: 100%;
     color: #fff;
     background: transparent;
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(25px);
     overflow-x: hidden;
     overflow-y: scroll;
-    padding: 0px 0px 0px 35px;
     z-index: 10;
 
     /* search */
@@ -76,6 +83,7 @@ export const Board = styled.div`
       height: 70px;
       display: flex;
       justify-content: space-between;
+      padding: 0px 0px 0px 35px;
 
       input {
         width: 65%;
@@ -97,7 +105,7 @@ export const Board = styled.div`
 
       button {
         width: 80px;
-        background-color: #ff7300;
+        background-color: #e2560d;
         border: none;
         cursor: pointer;
         transition: 0.25s;
@@ -119,6 +127,7 @@ export const Board = styled.div`
       gap: 20px;
       overflow-y: scroll;
       margin: 50px 0px 50px 0px;
+      padding: 0px 0px 0px 35px;
 
       p {
         font-weight: 300;
@@ -130,7 +139,7 @@ export const Board = styled.div`
     .weather-details {
       border-top: 1px solid rgba(255, 255, 255, 0.5);
       border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-      margin: 0px 50px 0px 0px;
+      margin: 0px 50px 0px 35px;
       padding: 50px 0px 50px 0px;
 
       .title {

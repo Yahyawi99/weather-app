@@ -5,20 +5,32 @@ const Provider = ({ children }) => {
   const [imageSrc, setImageSrc] = useState("");
   const [stylesVariables, setStylesVariables] = useState({});
 
-  const variables = {
+  const variables_Cloudy = {
     background:
       'url("/images/cloudy/cloudy-weather-small.jpg") bottom/cover repeat',
+    image_back:
+      'url("/images/cloudy/cloudy-weather-large.jpg") top center/ cover no-repeat',
+    details_back: "",
+    clr: "e2560d",
   };
-  const variables1 = {
+  const variables_Sunny = {
     background: "linear-gradient(#d4ecfd 0%,#669DC4 50%,#1A5BA9 95%)",
+    image_back:
+      'url("/images/sunny/sunflower large.jpg") top center/ cover no-repeat',
+    details_back: "linear-gradient(#152c44, rgba(21, 44, 68, 0.25))",
+    clr: "#4f8bb9",
   };
-  const variables2 = {
+  const variables_Rainy = {
     background:
       "linear-gradient(rgb(7, 6, 7,.75),rgb(7, 6, 7,.9),rgb(7, 6, 7))",
+    image_back:
+      'url("/images/rainy/rain-large.jpg") top center/ cover no-repeat',
+    details_back: "linear-gradient(rgb(40, 65, 62), rgb(40, 65, 62, 0.25))",
+    clr: "#4f6764",
   };
 
   useEffect(() => {
-    setStylesVariables(variables);
+    setStylesVariables(variables_Rainy);
   }, []);
 
   return (
@@ -47,7 +59,7 @@ light-blue: #4F8BB9
 sky-blue: #669DC4
 dark-brown : #4B3929
 light-brown :#C6AC93
-
+rgb(21, 44, 68)
 */
 
 /* 
@@ -58,6 +70,8 @@ light-green :#718583
 grey: #4F6764
 light-grey: #9EA7A6
 wheat : #E0E3E3
+
+rgb(40, 65, 62)
 */
 
 /* 

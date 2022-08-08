@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Board = styled.div`
-  width: 75%;
+  width: 80%;
   height: 80vh;
   color: #fff;
   position: absolute;
@@ -18,6 +18,7 @@ export const Board = styled.div`
       no-repeat;
     display: flex;
     align-items: flex-end;
+    gap: 20px;
 
     .degree {
       font-size: 8rem;
@@ -26,6 +27,7 @@ export const Board = styled.div`
     }
     .info {
       padding: 0px 0px 50px 0px;
+      margin: 0px 10px 0px 0px;
       .location {
         font-size: 3rem;
       }
@@ -48,7 +50,7 @@ export const Board = styled.div`
     height: 100%;
     position: absolute;
     right: 0;
-    background: linear-gradient(rgb(40, 65, 62), rgb(40, 65, 62, 0.25));
+    background: "";
   }
 
   /* ************************************************** */
@@ -73,7 +75,7 @@ export const Board = styled.div`
     height: 100%;
     color: #fff;
     background: transparent;
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(50px);
     overflow-x: hidden;
     overflow-y: scroll;
     z-index: 10;

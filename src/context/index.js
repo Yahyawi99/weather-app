@@ -30,7 +30,7 @@ const Provider = ({ children }) => {
   };
 
   useEffect(() => {
-    setStylesVariables(variables_Rainy);
+    setStylesVariables(variables_Cloudy);
   }, []);
 
   return (

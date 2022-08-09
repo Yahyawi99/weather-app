@@ -12,26 +12,28 @@ export const Board = styled.div`
   /* ************************************************** */
   /* image text */
   .image-txt {
-    width: 65%;
+    width: 70%;
     height: 100%;
     background: url("/images/cloudy/cloudy-weather-large.jpg") top center/ cover
       no-repeat;
     display: flex;
     align-items: flex-end;
-    gap: 20px;
+    gap: 10px;
 
     .degree {
-      font-size: 8rem;
+      font-size: 6rem;
       line-height: 75px;
       padding: 0px 0px 50px 50px;
     }
     .info {
       padding: 0px 0px 50px 0px;
-      margin: 0px 10px 0px 0px;
+      margin: 0px 20px 0px 0px;
       .location {
-        font-size: 3rem;
+        text-align: center;
+        font-size: 2.5rem;
       }
       .time {
+        text-align: center;
         font-weight: 300;
       }
     }
@@ -71,7 +73,7 @@ export const Board = styled.div`
   /* ************************************************** */
   /* details */
   .details {
-    width: 35%;
+    width: 30%;
     height: 100%;
     color: #fff;
     background: transparent;

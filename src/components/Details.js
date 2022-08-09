@@ -1,10 +1,29 @@
 import React from "react";
+// useContext
+import { useGlobal } from "../context";
 
 const Details = () => {
+  const { location, setLocation, getWeather, weather } = useGlobal();
+
+  if (weather) {
+    var {
+      current,
+      forecast: { forecastday },
+    } = weather;
+  } else {
+    var current = "";
+    var forecastday = "";
+  }
+
   return (
     <section className="details">
-      <form className="search">
-        <input type="text" placeholder="Look for another location..." />
+      <form className="search" onSubmit={(e) => getWeather(e)}>
+        <input
+          type="text"
+          placeholder="Look for another location..."
+          value={location}
+          onChange={(e) => setLocation(e.currentTarget.value)}
+        />
 
         <button type="submit" className="search-icon">
           <img src="/icons/search.png" alt="search-icon" />
@@ -12,7 +31,6 @@ const Details = () => {
       </form>
 
       <div className="history">
-        <p>Birmingham</p>
         <p>Manchester</p>
         <p>New York</p>
         <p>California</p>
@@ -23,22 +41,22 @@ const Details = () => {
 
         <span>
           <p>Cloudy</p>
-          <p>86%</p>
+          <p>{current ? current.cloud : "_"}%</p>
         </span>
 
         <span>
           <p>Humidity</p>
-          <p>62%</p>
+          <p>{current ? current.humidity : "_"}%</p>
         </span>
 
         <span>
           <p>Wind</p>
-          <p>8km/h</p>
+          <p>{current ? current.wind_kph : "_"}km/h</p>
         </span>
 
         <span>
           <p>Rain</p>
-          <p>0mm</p>
+          <p>{current ? current.precip_mm : "_"}mm</p>
         </span>
       </div>
 
@@ -47,27 +65,27 @@ const Details = () => {
 
         <span>
           <p>Temperature</p>
-          <p>27°</p>
-        </span>
-
-        <span>
-          <p>Cloudy</p>
-          <p>86%</p>
+          <p>{forecastday ? forecastday[0].day.avgtemp_c : "_"}°</p>
         </span>
 
         <span>
           <p>Humidity</p>
-          <p>62%</p>
+          <p>{forecastday ? forecastday[0].day.avghumidity : "_"}%</p>
         </span>
 
         <span>
           <p>Wind</p>
-          <p>8km/h</p>
+          <p>{forecastday ? forecastday[0].day.maxwind_kph : "_"}km/h</p>
         </span>
 
         <span>
           <p>Rain</p>
-          <p>0mm</p>
+          <p>{forecastday ? forecastday[0].day.daily_chance_of_rain : "_"}%</p>
+        </span>
+
+        <span>
+          <p>Snow</p>
+          <p>{forecastday ? forecastday[0].day.daily_chance_of_snow : "_"}%</p>
         </span>
       </div>
     </section>

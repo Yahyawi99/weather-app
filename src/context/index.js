@@ -86,7 +86,6 @@ const Provider = ({ children }) => {
         setWeather(response.data);
 
         setLocation("");
-        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -109,6 +108,8 @@ const Provider = ({ children }) => {
 
       setIconSrc(is_day, icon);
       setBackgrounds(is_day, icon);
+
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }

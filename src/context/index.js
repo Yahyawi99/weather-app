@@ -9,39 +9,11 @@ const Provider = ({ children }) => {
   const [icon, setIcon] = useState("");
   const [stylesVariables, setStylesVariables] = useState({});
 
-  // eslint-disable-next-line
-  const variables_Cloudy = {
-    background:
-      'url("/images/cloudy/cloudy-weather-small.jpg") bottom/cover repeat',
-    image_back:
-      'url("/images/cloudy/cloudy-weather-large.jpg") top center/ cover no-repeat',
-    details_back: "",
-    clr: "e2560d",
-  };
-  // eslint-disable-next-line
-  const variables_Sunny = {
-    background: "linear-gradient(#d4ecfd 0%,#669DC4 50%,#1A5BA9 95%)",
-    image_back:
-      'url("/images/sunny/sunflower large.jpg") top center/ cover no-repeat',
-    details_back: "linear-gradient(#152c44, rgba(21, 44, 68, 0.25))",
-    clr: "#4f8bb9",
-  };
-  // eslint-disable-next-line
-  const variables_Rainy = {
-    background:
-      "linear-gradient(rgb(7, 6, 7,.75),rgb(7, 6, 7,.9),rgb(7, 6, 7))",
-    image_back:
-      'url("/images/rainy/rain-large.jpg") top center/ cover no-repeat',
-    details_back: "linear-gradient(rgb(40, 65, 62), rgb(40, 65, 62, 0.25))",
-    clr: "#4f6764",
-  };
-
   useEffect(() => {
-    setStylesVariables(variables_Cloudy);
-    // eslint-disable-next-line
-  }, []);
+    console.log(new Date("2022-08-09 19:48"));
+  }, [stylesVariables]);
 
-  // *******************************************************************
+  /* ***************************************************************** */
   // Weather API
   const Tomorow = () => {
     const today = new Date();
@@ -58,7 +30,7 @@ const Provider = ({ children }) => {
   };
 
   const formatDate = (time) => {
-    const date = new Date(time * 1000);
+    const date = new Date(time);
 
     const hours = date.getHours();
     const minutes = date.getMinutes();
@@ -107,7 +79,7 @@ const Provider = ({ children }) => {
         "https://www.weatherapi.com/docs/weather_conditions.json"
       );
 
-      const { day, night, icon } = response.data.find((e) => e.code === code);
+      const { icon } = response.data.find((e) => e.code === code);
 
       setIconSrc(is_day, icon);
       setBackgrounds(is_day, icon);
@@ -124,7 +96,87 @@ const Provider = ({ children }) => {
     }
   };
 
-  const setBackgrounds = () => {};
+  const setBackgrounds = (is_day, icon) => {
+    if (is_day) {
+      if (icon === 113) {
+        setStylesVariables({
+          ...stylesVariables,
+          background: "linear-gradient(#d4ecfd 0%,#669DC4 50%,#1A5BA9 95%)",
+          image_back:
+            'url("/images/day/clear.jpg") top center/ cover no-repeat',
+          details_back: "linear-gradient(#152c44, rgba(21, 44, 68, 0.25))",
+          clr: "#4f8bb9",
+        });
+      } else if (icon > 113 && icon < 176) {
+        setStylesVariables({
+          ...stylesVariables,
+          background: 'url("/images/day/cloud.jpg") bottom/cover repeat',
+          image_back:
+            'url("/images/day/cloud.jpg") top center/ cover no-repeat',
+          details_back: "",
+          clr: "#e2560d",
+        });
+      } else if ((icon >= 176 && icon <= 284) || (icon >= 311 && icon <= 350)) {
+        setStylesVariables({
+          ...stylesVariables,
+          background: " linear-gradient(#669dc4, #d4ecfd)",
+          image_back: 'url("/images/day/snow.jpg") top center/ cover no-repeat',
+          details_back: "rgba(21, 44, 68, 0.5)",
+          clr: "#d4ecfd",
+        });
+      } else {
+        setStylesVariables({
+          ...stylesVariables,
+          background:
+            "linear-gradient(rgb(7, 6, 7,.75),rgb(7, 6, 7,.9),rgb(7, 6, 7))",
+          image_back: 'url("/images/day/rain.jpg") top center/ cover no-repeat',
+          details_back:
+            "linear-gradient(rgb(40, 65, 62), rgb(40, 65, 62, 0.25))",
+          clr: "#4f6764",
+        });
+      }
+    } else {
+      if (icon === 113) {
+        setStylesVariables({
+          ...stylesVariables,
+          background: "linear-gradient(#d4ecfd 0%,#669DC4 50%,#1A5BA9 95%)",
+          image_back:
+            'url("/images/night/clear.jpg") top center/ cover no-repeat',
+          details_back: "linear-gradient(#152c44, rgba(21, 44, 68, 0.25))",
+          clr: "#4f8bb9",
+        });
+      } else if (icon > 113 && icon < 176) {
+        setStylesVariables({
+          ...stylesVariables,
+          background: 'url("/images/night/cloud.jpg") bottom/cover repeat',
+          image_back:
+            'url("/images/night/cloud.jpg") top center/ cover no-repeat',
+          details_back: "",
+          clr: "#e2560d",
+        });
+      } else if ((icon >= 176 && icon <= 284) || (icon >= 311 && icon <= 350)) {
+        setStylesVariables({
+          ...stylesVariables,
+          background: " linear-gradient(#669dc4, #d4ecfd)",
+          image_back:
+            'url("/images/night/snow.jpg") top center/ cover no-repeat',
+          details_back: "rgba(21, 44, 68, 0.5)",
+          clr: "#d4ecfd",
+        });
+      } else {
+        setStylesVariables({
+          ...stylesVariables,
+          background:
+            "linear-gradient(rgb(7, 6, 7,.75),rgb(7, 6, 7,.9),rgb(7, 6, 7))",
+          image_back:
+            'url("/images/night/rain.jpg") top center/ cover no-repeat',
+          details_back:
+            "linear-gradient(rgb(40, 65, 62), rgb(40, 65, 62, 0.25))",
+          clr: "#4f6764",
+        });
+      }
+    }
+  };
 
   return (
     <AppContext.Provider

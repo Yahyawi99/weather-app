@@ -15,7 +15,7 @@ const AppContainer = () => {
     <Container stylesVariables={stylesVariables}>
       <Background />
 
-      <Board>
+      <Board stylesVariables={stylesVariables}>
         <ImageText />
 
         <div className="details-back"></div>

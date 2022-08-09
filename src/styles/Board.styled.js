@@ -14,8 +14,7 @@ export const Board = styled.div`
   .image-txt {
     width: 70%;
     height: 100%;
-    background: url("/images/cloudy/cloudy-weather-large.jpg") top center/ cover
-      no-repeat;
+    background: ${({ stylesVariables: { image_back } }) => image_back};
     display: flex;
     align-items: flex-end;
     gap: 10px;
@@ -29,6 +28,7 @@ export const Board = styled.div`
       padding: 0px 0px 50px 0px;
       margin: 0px 20px 0px 0px;
       .location {
+        max-width: 200px;
         text-align: center;
         font-size: 2.5rem;
       }
@@ -42,17 +42,14 @@ export const Board = styled.div`
       img {
         max-width: 50px;
       }
-      .img-description {
-        font-weight: 300;
-      }
     }
   }
   .details-back {
-    width: 35%;
+    width: 30%;
     height: 100%;
     position: absolute;
     right: 0;
-    background: "";
+    background: ${({ stylesVariables: { details_back } }) => details_back};
   }
 
   /* ************************************************** */
@@ -62,7 +59,7 @@ export const Board = styled.div`
   }
 
   *::-webkit-scrollbar-thumb {
-    background: #ff7300;
+    background: ${({ stylesVariables: { clr } }) => clr};
     border-radius: 10px;
   }
 
@@ -109,7 +106,7 @@ export const Board = styled.div`
 
       button {
         width: 80px;
-        background-color: #e2560d;
+        background-color: ${({ stylesVariables: { clr } }) => clr};
         border: none;
         cursor: pointer;
         transition: 0.25s;

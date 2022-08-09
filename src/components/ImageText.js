@@ -19,9 +19,7 @@ const ImageText = () => {
       <div className="info">
         <h1 className="location">{location ? location.name : "_"}</h1>
 
-        <p className="time">
-          {location ? formatDate(location.localtime_epoch) : ""}
-        </p>
+        <p className="time">{location ? formatDate(location.localtime) : ""}</p>
       </div>
 
       <div className="icon">

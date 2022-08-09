@@ -288,5 +288,5 @@ fetch('https://spotify23.p.rapidapi.com/search/?q=%3CREQUIRED%3E&type=multi&offs
 *********************************
 
 #https://api.weatherapi.com/v1/forecast.json?key=73361cf6d6cc40d5a40170046220508&q=casablanca&date=2022-08-06
-
+ 
 */

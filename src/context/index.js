@@ -17,6 +17,8 @@ const Provider = ({ children }) => {
   // Automatic Weather fetching
   const autoWeather = async () => {
     try {
+      setLoading(true);
+
       const response = await axios(
         `https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=${process.env.REACT_APP_IP_GEOLOCATION_API_KEY}`
       );
@@ -25,6 +27,8 @@ const Provider = ({ children }) => {
 
       setLocation(city);
       getWeather(null, city);
+
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +71,8 @@ const Provider = ({ children }) => {
 
     if (location || myLocation) {
       try {
+        setLoading(true);
+
         const response =
           await axios(`https://api.weatherapi.com/v1/forecast.json?key=${
             process.env.REACT_APP_WEATHER_API_KEY
@@ -80,6 +86,7 @@ const Provider = ({ children }) => {
         setWeather(response.data);
 
         setLocation("");
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -240,7 +247,7 @@ dark-green : #28413E
 light-green :#718583
 grey: #4F6764
 light-grey: #9EA7A6
-wheat : #E0E3E3
+wheat : #d2e4e4
 
 rgb(40, 65, 62)
 */

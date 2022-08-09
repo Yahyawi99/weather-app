@@ -10,8 +10,24 @@ const Provider = ({ children }) => {
   const [stylesVariables, setStylesVariables] = useState({});
 
   useEffect(() => {
-    console.log(new Date("2022-08-09 19:48"));
-  }, [stylesVariables]);
+    autoWeather();
+  }, []);
+
+  // Automatic Weather fetching
+  const autoWeather = async () => {
+    try {
+      const response = await axios(
+        `https://ip-geolocation.whoisxmlapi.com/api/v1?apiKey=${process.env.REACT_APP_IP_GEOLOCATION_API_KEY}`
+      );
+
+      const { city } = response.data.location;
+
+      setLocation(city);
+      getWeather(null, city);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   /* ***************************************************************** */
   // Weather API
@@ -43,15 +59,17 @@ const Provider = ({ children }) => {
     return `${hours}:${minutes} - ${weekday}, ${day + " " + month} '${year}`;
   };
 
-  const getWeather = async (e) => {
-    e.preventDefault();
+  const getWeather = async (e, myLocation) => {
+    if (e) {
+      e.preventDefault();
+    }
 
-    if (location) {
+    if (location || myLocation) {
       try {
         const response =
           await axios(`https://api.weatherapi.com/v1/forecast.json?key=${
             process.env.REACT_APP_WEATHER_API_KEY
-          }&q=${location}&date=${Tomorow()}
+          }&q=${location ? location : myLocation}&date=${Tomorow()}
 `);
         await getWeatherIcon(
           response.data.current,

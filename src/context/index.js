@@ -7,6 +7,7 @@ const Provider = ({ children }) => {
   const [location, setLocation] = useState("");
   const [weather, setWeather] = useState("");
   const [icon, setIcon] = useState("");
+  const [loading, setLoading] = useState(true);
   const [stylesVariables, setStylesVariables] = useState({});
 
   useEffect(() => {
@@ -206,6 +207,7 @@ const Provider = ({ children }) => {
         weather,
         formatDate,
         icon,
+        loading,
       }}
     >
       {children}

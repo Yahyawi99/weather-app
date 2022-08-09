@@ -39,6 +39,7 @@ export const Board = styled.div`
     }
     .icon {
       padding: 0px 0px 50px 0px;
+      margin: 0px 0px 0px 15px;
       img {
         max-width: 50px;
       }

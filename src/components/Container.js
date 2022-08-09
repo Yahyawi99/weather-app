@@ -7,9 +7,14 @@ import { Background } from "../styles/Background.styled";
 // components
 import Details from "../components/Details";
 import ImageText from "../components/ImageText";
+import Loader from "./Loader";
 
 const AppContainer = () => {
-  const { stylesVariables } = useGlobal();
+  const { stylesVariables, loading } = useGlobal();
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <Container stylesVariables={stylesVariables}>

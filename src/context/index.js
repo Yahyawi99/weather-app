@@ -13,6 +13,22 @@ const Provider = ({ children }) => {
   const [stylesVariables, setStylesVariables] = useState({});
 
   /* ***************************************************************** */
+  // Error
+  const errorMessage = (err) => {
+    setLocation("");
+
+    if (err.response.data) {
+      setMsg(err.response.data.error.message);
+    } else {
+      setMsg(err.message);
+    }
+
+    setTimeout(() => {
+      setErr(false);
+    }, 2500);
+  };
+
+  /* ***************************************************************** */
   // Automatic Weather fetching
   const autoWeather = async () => {
     try {
@@ -32,6 +48,8 @@ const Provider = ({ children }) => {
     } catch (error) {
       setLoading(false);
       setErr(true);
+
+      errorMessage(error);
     }
   };
 
@@ -96,6 +114,8 @@ const Provider = ({ children }) => {
       } catch (error) {
         setLoading(false);
         setErr(true);
+
+        errorMessage(error);
       }
     } else {
       console.log("please add a location");

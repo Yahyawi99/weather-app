@@ -16,8 +16,6 @@ const Provider = ({ children }) => {
 
   // timer
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  // audio
-  const audio = new Audio("/Audio/Francisco Tárrega.mp3");
 
   /* ***************************************************************** */
   // Error
@@ -266,7 +264,6 @@ const Provider = ({ children }) => {
         msg,
         translate,
         track,
-        audio,
       }}
     >
       {children}

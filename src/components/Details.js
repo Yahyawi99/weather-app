@@ -17,13 +17,7 @@ const Details = () => {
 
   return (
     <section className="details">
-      <form
-        className="search"
-        onSubmit={(e) => {
-          getWeather(e);
-          audio.play();
-        }}
-      >
+      <form className="search" onSubmit={(e) => getWeather(e)}>
         <input
           type="text"
           placeholder="Look for another location..."

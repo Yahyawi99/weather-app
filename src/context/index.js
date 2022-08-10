@@ -54,13 +54,13 @@ const Provider = ({ children }) => {
     const date = new Date(time);
 
     const hours = date.getHours();
-    const minutes = date.getMinutes();
+    const minutes =
+      date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
     const weekday = date.toLocaleDateString("en", { weekday: "long" });
     const day = date.getDate();
     const month = date.toLocaleDateString("en", { month: "long" });
     const year = date.toLocaleDateString("en", { year: "2-digit" });
 
-    // 06:09 - Monday, 9 Sep '19
     return `${hours}:${minutes} - ${weekday}, ${day + " " + month} '${year}`;
   };
 
@@ -166,10 +166,13 @@ const Provider = ({ children }) => {
       if (icon === 113) {
         setStylesVariables({
           ...stylesVariables,
-          background: "linear-gradient(#d4ecfd 0%,#669DC4 50%,#1A5BA9 95%)",
+          background:
+            "linear-gradient(#152c44 0%,rgb(9, 25, 43) 50%,rgb(0, 0, 0) 95%)",
+
           image_back:
             'url("/images/night/clear.jpg") top center/ cover no-repeat',
-          details_back: "linear-gradient(#152c44, rgba(21, 44, 68, 0.25))",
+          details_back:
+            "linear-gradient(rgb(0, 0, 0), rgba(21, 44, 68, 0.25),#152c44)",
           clr: "#4f8bb9",
         });
       } else if (icon > 113 && icon < 176) {
@@ -288,5 +291,5 @@ fetch('https://spotify23.p.rapidapi.com/search/?q=%3CREQUIRED%3E&type=multi&offs
 *********************************
 
 #https://api.weatherapi.com/v1/forecast.json?key=73361cf6d6cc40d5a40170046220508&q=casablanca&date=2022-08-06
- 
+
 */

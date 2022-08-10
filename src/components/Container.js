@@ -29,7 +29,8 @@ const AppContainer = () => {
         <Details />
       </Board>
 
-      {err && <Message />}
+      {/* {err && <Message />} */}
+      <Message />
     </Container>
   );
 };

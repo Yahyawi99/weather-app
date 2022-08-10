@@ -28,7 +28,7 @@ export const Board = styled.div`
       padding: 0px 0px 50px 0px;
       margin: 0px 20px 0px 0px;
       .location {
-        max-width: 200px;
+        max-width: 250px;
         text-align: center;
         font-size: 2.5rem;
       }
@@ -128,12 +128,16 @@ export const Board = styled.div`
       flex-direction: column;
       gap: 20px;
       overflow-y: scroll;
-      margin: 50px 0px 50px 0px;
+      margin: 40px 0px 40px 0px;
       padding: 0px 0px 0px 35px;
 
       p {
         font-weight: 300;
         opacity: 0.5;
+        cursor: pointer;
+      }
+      p:hover {
+        text-decoration: 2px underline;
       }
     }
 

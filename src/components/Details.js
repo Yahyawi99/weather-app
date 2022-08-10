@@ -30,10 +30,19 @@ const Details = () => {
         </button>
       </form>
 
-      <div className="history">
-        <p>Manchester</p>
-        <p>New York</p>
-        <p>California</p>
+      <div
+        className="history"
+        onClick={(e) => {
+          if (e.target.dataset.city) {
+            getWeather(e, e.target.dataset.city);
+          }
+        }}
+      >
+        <p data-city="Hong Kong">Hong Kong</p>
+        <p data-city="New York">New York</p>
+        <p data-city="London">London</p>
+        <p data-city="Paris">Paris</p>
+        <p data-city="Tokyo">Tokyo</p>
       </div>
 
       <div className="weather-details">

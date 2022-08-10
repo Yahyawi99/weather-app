@@ -10,12 +10,20 @@ const Provider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(false);
   const [msg, setMsg] = useState("");
+  const [translate, setTranslate] = useState("-50");
   const [stylesVariables, setStylesVariables] = useState({});
 
+  // timer
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   /* ***************************************************************** */
   // Error
-  const errorMessage = (err) => {
+  const errorMessage = async (err) => {
     setLocation("");
+    setLoading(false);
+
+    await wait(250);
+
+    setErr(true);
 
     if (err.response.data) {
       setMsg(err.response.data.error.message);
@@ -23,9 +31,12 @@ const Provider = ({ children }) => {
       setMsg(err.message);
     }
 
-    setTimeout(() => {
-      setErr(false);
-    }, 2500);
+    setTranslate(50);
+
+    await wait(3000);
+
+    setErr(false);
+    setTranslate(-50);
   };
 
   /* ***************************************************************** */
@@ -41,14 +52,10 @@ const Provider = ({ children }) => {
 
       const { city } = response.data.location;
 
-      setLocation(city);
       getWeather(null, city);
 
       setLoading(false);
     } catch (error) {
-      setLoading(false);
-      setErr(true);
-
       errorMessage(error);
     }
   };
@@ -112,13 +119,17 @@ const Provider = ({ children }) => {
 
         setLocation("");
       } catch (error) {
-        setLoading(false);
-        setErr(true);
-
         errorMessage(error);
       }
     } else {
-      console.log("please add a location");
+      console.log("in");
+      setMsg("please add a location.");
+
+      setTranslate(50);
+
+      await wait(3000);
+
+      setTranslate(-50);
     }
   };
 
@@ -250,6 +261,7 @@ const Provider = ({ children }) => {
         loading,
         err,
         msg,
+        translate,
       }}
     >
       {children}

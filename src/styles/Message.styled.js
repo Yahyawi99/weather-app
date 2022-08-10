@@ -8,7 +8,9 @@ export const MessagePopUp = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 25px;
+  top: 0;
   border-radius: 5px;
+  transform: ${({ value }) => `translateY(${value}px)`};
+  transition: 0.25s;
   padding: 15px 25px;
 `;

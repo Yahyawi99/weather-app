@@ -3,7 +3,7 @@ import React from "react";
 import { useGlobal } from "../context";
 
 const Details = () => {
-  const { location, setLocation, getWeather, weather, audio } = useGlobal();
+  const { location, setLocation, getWeather, weather } = useGlobal();
 
   if (weather) {
     var {

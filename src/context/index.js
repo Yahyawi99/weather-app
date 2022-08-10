@@ -8,13 +8,17 @@ const Provider = ({ children }) => {
   const [weather, setWeather] = useState("");
   const [icon, setIcon] = useState("");
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState(false);
   const [msg, setMsg] = useState("");
   const [translate, setTranslate] = useState("-50");
   const [stylesVariables, setStylesVariables] = useState({});
+  const [spotifySearch, setSpotifySearch] = useState("");
+  const [track, setTrack] = useState("");
 
   // timer
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  // audio
+  const audio = new Audio("/Audio/Francisco Tárrega.mp3");
+
   /* ***************************************************************** */
   // Error
   const errorMessage = async (err) => {
@@ -22,8 +26,6 @@ const Provider = ({ children }) => {
     setLoading(false);
 
     await wait(250);
-
-    setErr(true);
 
     if (err.response.data) {
       setMsg(err.response.data.error.message);
@@ -35,15 +37,13 @@ const Provider = ({ children }) => {
 
     await wait(3000);
 
-    setErr(false);
     setTranslate(-50);
   };
 
   /* ***************************************************************** */
-  // Automatic Weather fetching
+  // Automatic Weather fetching IP Adress geolocation API
   const autoWeather = async () => {
     try {
-      setErr(false);
       setLoading(true);
 
       const response = await axios(
@@ -102,7 +102,6 @@ const Provider = ({ children }) => {
 
     if (location || myLocation) {
       try {
-        setErr(false);
         setLoading(true);
 
         const response =
@@ -122,7 +121,6 @@ const Provider = ({ children }) => {
         errorMessage(error);
       }
     } else {
-      console.log("in");
       setMsg("please add a location.");
 
       setTranslate(50);
@@ -151,7 +149,13 @@ const Provider = ({ children }) => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      setErr(true);
+
+      setMsg("Something went wrong please try again");
+      setTranslate(50);
+
+      wait(3000);
+
+      setTranslate(-50);
     }
   };
 
@@ -259,9 +263,10 @@ const Provider = ({ children }) => {
         formatDate,
         icon,
         loading,
-        err,
         msg,
         translate,
+        track,
+        audio,
       }}
     >
       {children}

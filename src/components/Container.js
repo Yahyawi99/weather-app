@@ -11,7 +11,7 @@ import Loader from "./Loader";
 import Message from "./Message";
 
 const AppContainer = () => {
-  const { stylesVariables, loading, err } = useGlobal();
+  const { stylesVariables, loading } = useGlobal();
 
   if (loading) {
     return <Loader />;
@@ -29,7 +29,6 @@ const AppContainer = () => {
         <Details />
       </Board>
 
-      {/* {err && <Message />} */}
       <Message />
     </Container>
   );

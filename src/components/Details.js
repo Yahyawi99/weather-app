@@ -3,7 +3,7 @@ import React from "react";
 import { useGlobal } from "../context";
 
 const Details = () => {
-  const { location, setLocation, getWeather, weather } = useGlobal();
+  const { location, setLocation, getWeather, weather, audio } = useGlobal();
 
   if (weather) {
     var {
@@ -17,7 +17,13 @@ const Details = () => {
 
   return (
     <section className="details">
-      <form className="search" onSubmit={(e) => getWeather(e)}>
+      <form
+        className="search"
+        onSubmit={(e) => {
+          getWeather(e);
+          audio.play();
+        }}
+      >
         <input
           type="text"
           placeholder="Look for another location..."

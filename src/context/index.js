@@ -8,15 +8,15 @@ const Provider = ({ children }) => {
   const [weather, setWeather] = useState("");
   const [icon, setIcon] = useState("");
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(false);
+  const [msg, setMsg] = useState("");
   const [stylesVariables, setStylesVariables] = useState({});
 
-  useEffect(() => {
-    autoWeather();
-  }, []);
-
+  /* ***************************************************************** */
   // Automatic Weather fetching
   const autoWeather = async () => {
     try {
+      setErr(false);
       setLoading(true);
 
       const response = await axios(
@@ -30,9 +30,15 @@ const Provider = ({ children }) => {
 
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      setLoading(false);
+      setErr(true);
     }
   };
+
+  useEffect(() => {
+    autoWeather();
+    // eslint-disable-next-line
+  }, []);
 
   /* ***************************************************************** */
   // Weather API
@@ -71,6 +77,7 @@ const Provider = ({ children }) => {
 
     if (location || myLocation) {
       try {
+        setErr(false);
         setLoading(true);
 
         const response =
@@ -87,7 +94,8 @@ const Provider = ({ children }) => {
 
         setLocation("");
       } catch (error) {
-        console.log(error);
+        setLoading(false);
+        setErr(true);
       }
     } else {
       console.log("please add a location");
@@ -111,7 +119,8 @@ const Provider = ({ children }) => {
 
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      setLoading(false);
+      setErr(true);
     }
   };
 
@@ -219,6 +228,8 @@ const Provider = ({ children }) => {
         formatDate,
         icon,
         loading,
+        err,
+        msg,
       }}
     >
       {children}

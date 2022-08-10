@@ -8,6 +8,7 @@ import { Background } from "../styles/Background.styled";
 import Details from "../components/Details";
 import ImageText from "../components/ImageText";
 import Loader from "./Loader";
+import Message from "./Message";
 
 const AppContainer = () => {
   const { stylesVariables, loading } = useGlobal();
@@ -27,6 +28,8 @@ const AppContainer = () => {
 
         <Details />
       </Board>
+
+      <Message />
     </Container>
   );
 };
